@@ -13,23 +13,26 @@ import java.util.UUID;
 @AllArgsConstructor
 @Transactional
 public class RefreshTokenService {
-
-    private final RefreshTokenRepository refreshTokenRepository;
+    private final RefreshTokenRepository refeshTokenRepository;
 
     public RefreshToken generateRefreshToken() {
         RefreshToken refreshToken = new RefreshToken();
         refreshToken.setToken(UUID.randomUUID().toString());
         refreshToken.setCreatedDate(Instant.now());
 
-        return refreshTokenRepository.save(refreshToken);
+        return refeshTokenRepository.save(refreshToken);
     }
 
-    void validateRefreshToken(String token) {
-        refreshTokenRepository.findByToken(token)
+    void validateRefreshToken(String token) throws SpringRedditException {
+        refeshTokenRepository.findByToken(token)
                 .orElseThrow(() -> new SpringRedditException("Invalid refresh Token"));
     }
 
     public void deleteRefreshToken(String token) {
-        refreshTokenRepository.deleteByToken(token);
+        refeshTokenRepository.deleteByToken(token);
     }
+
+
+
+
 }
