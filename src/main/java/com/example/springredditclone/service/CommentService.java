@@ -27,8 +27,7 @@ import java.util.stream.Collectors;
 public class CommentService {
 
     //TODO: Construct POST URL
-    private static final String POST_URL = "";
-
+    private static final String POST_URL ="";
     private final CommentMapper commentMapper;
     private final PostRepository postRepository;
     private final CommentRepository commentRepository;

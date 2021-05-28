@@ -12,10 +12,9 @@ import java.util.List;
 import static org.springframework.http.ResponseEntity.status;
 
 @RestController
-@RequestMapping("/api/posts/")
+@RequestMapping("/api/posts")
 @AllArgsConstructor
 public class PostController {
-
     private final PostService postService;
 
     @PostMapping
@@ -23,7 +22,6 @@ public class PostController {
         postService.save(postRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
     @GetMapping
     public ResponseEntity<List<PostResponse>> getAllPosts() {
         return status(HttpStatus.OK).body(postService.getAllPosts());

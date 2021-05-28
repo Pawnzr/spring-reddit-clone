@@ -26,7 +26,6 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 @Transactional
 public class PostService {
-
     private final PostRepository postRepository;
     private final SubredditRepository subredditRepository;
     private final UserRepository userRepository;
